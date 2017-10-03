@@ -12,9 +12,15 @@ namespace IFN647_SearchEngine
 {
     public partial class IndexForm1 : Form
     {
+        private List<JournalArticle> articles;
+        private LuceneSearch luceneSearch;
         public IndexForm1()
         {
             InitializeComponent();
+            //test
+            docPathLabel.Text = @"D:\collection\crandocs";
+            indexPathLabel.Text = @"D:\ifn647_index";
+            articles = new List<JournalArticle>();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -44,6 +50,11 @@ namespace IFN647_SearchEngine
         {
             if (docPathLabel.Text !="" && indexPathLabel.Text !="")
             {
+                string documentPath = docPathLabel.Text;
+                //Read all text file in document directory
+                WalkDirectoryTree(documentPath);
+                //Index
+                IndexDocuments();
 
             } else
             {
@@ -54,5 +65,62 @@ namespace IFN647_SearchEngine
     MessageBoxDefaultButton.Button1);
             }
         }
+        private void IndexDocuments()
+        {
+            LuceneSearch luceneSearch = new LuceneSearch();
+
+            string indexPath = indexPathLabel.Text;
+
+            luceneSearch.CreateIndex(indexPath);
+            System.Console.WriteLine("Adding Documents to Index");
+            foreach (JournalArticle article in articles)
+            {
+                luceneSearch.IndexText(article.Words);
+            }
+            System.Console.WriteLine("All documents added.");
+        }
+        private void WalkDirectoryTree(String path)
+        {
+            System.IO.DirectoryInfo root = new System.IO.DirectoryInfo(path);
+            System.IO.FileInfo[] files = null;
+            System.IO.DirectoryInfo[] subDirs = null;
+
+            // First, process all the files directly under this folder 
+            try
+            {
+                files = root.GetFiles("*.txt");
+            }
+
+            catch (UnauthorizedAccessException e)
+            {
+                System.Console.WriteLine(e.Message);
+            }
+
+            catch (System.IO.DirectoryNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            if (files != null)
+            {
+                foreach (System.IO.FileInfo fi in files)
+                {
+                    string name = fi.FullName;
+                    JournalArticle journalArticle = new JournalArticle(name);
+                    articles.Add(journalArticle);
+                }
+
+                // Now find all the subdirectories under this directory.
+                subDirs = root.GetDirectories();
+
+                foreach (System.IO.DirectoryInfo dirInfo in subDirs)
+                {
+                    // Resursive call for each subdirectory.
+                    string name = dirInfo.FullName;
+                    WalkDirectoryTree(name);
+                }
+            }
+        }
+
     }
 }

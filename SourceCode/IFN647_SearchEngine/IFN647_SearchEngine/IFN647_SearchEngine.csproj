@@ -59,6 +59,7 @@
     <Compile Include="IndexForm1.Designer.cs">
       <DependentUpon>IndexForm1.cs</DependentUpon>
     </Compile>
+    <Compile Include="JournalArticle.cs" />
     <Compile Include="LuceneSearch.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
