@@ -34,7 +34,7 @@
             this.indexPathLabel = new System.Windows.Forms.Label();
             this.documentPathBtn = new System.Windows.Forms.Button();
             this.indexPathBtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox = new System.Windows.Forms.TextBox();
             this.indexBtn = new System.Windows.Forms.Button();
             this.nextBtn = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -94,13 +94,13 @@
             this.indexPathBtn.UseVisualStyleBackColor = true;
             this.indexPathBtn.Click += new System.EventHandler(this.indexPathBtn_Click);
             // 
-            // textBox1
+            // textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 132);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(274, 222);
-            this.textBox1.TabIndex = 6;
+            this.textBox.Location = new System.Drawing.Point(16, 132);
+            this.textBox.Multiline = true;
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(274, 222);
+            this.textBox.TabIndex = 6;
             // 
             // indexBtn
             // 
@@ -114,12 +114,14 @@
             // 
             // nextBtn
             // 
+            this.nextBtn.Enabled = false;
             this.nextBtn.Location = new System.Drawing.Point(387, 174);
             this.nextBtn.Name = "nextBtn";
             this.nextBtn.Size = new System.Drawing.Size(75, 23);
             this.nextBtn.TabIndex = 8;
             this.nextBtn.Text = "Start";
             this.nextBtn.UseVisualStyleBackColor = true;
+            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
             // 
             // IndexForm1
             // 
@@ -128,7 +130,7 @@
             this.ClientSize = new System.Drawing.Size(489, 366);
             this.Controls.Add(this.nextBtn);
             this.Controls.Add(this.indexBtn);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox);
             this.Controls.Add(this.indexPathBtn);
             this.Controls.Add(this.documentPathBtn);
             this.Controls.Add(this.indexPathLabel);
@@ -150,7 +152,7 @@
         private System.Windows.Forms.Label indexPathLabel;
         private System.Windows.Forms.Button documentPathBtn;
         private System.Windows.Forms.Button indexPathBtn;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Button indexBtn;
         private System.Windows.Forms.Button nextBtn;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;

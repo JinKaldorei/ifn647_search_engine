@@ -29,19 +29,19 @@ namespace IFN647_SearchEngine
             //Parse title
             start = end;
             end = text.IndexOf(".A");
-            Title = text.Substring(start + 3, end - start - 4);
+            Title = text.Substring(start + 3, end - start - 3);
             //Parse Author
             start = end;
             end = text.IndexOf(".B");
-            Author = text.Substring(start + 3, end - start - 4);
+            Author = text.Substring(start + 3, end - start - 3);
             //Parse Biblio
             start = end;
             end = text.IndexOf(".W");
-            Bibliographic = text.Substring(start + 3, end - start - 4);
+            Bibliographic = text.Substring(start + 3, end - start - 3);
             //Parse Words
             //Remove title which is included in the words of abstract
             start = end;
-            Words = text.Substring(start + 4 + Title.Length);         
+            Words = text.Substring(start + 3 + Title.Length);         
         }
     }
 }

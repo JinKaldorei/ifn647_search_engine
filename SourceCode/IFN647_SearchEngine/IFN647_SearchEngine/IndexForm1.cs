@@ -67,6 +67,8 @@ namespace IFN647_SearchEngine
         }
         private void IndexDocuments()
         {
+            textBox.AppendText("Start indexing ...\n");
+            DateTime start = System.DateTime.Now;
             LuceneSearch luceneSearch = new LuceneSearch();
 
             string indexPath = indexPathLabel.Text;
@@ -77,7 +79,11 @@ namespace IFN647_SearchEngine
             {
                 luceneSearch.IndexText(article.Words);
             }
+            DateTime end = System.DateTime.Now;
             System.Console.WriteLine("All documents added.");
+            textBox.AppendText("All documents added.\n");
+            textBox.AppendText("The indexing lasted for "+(end -start)+"\n");
+            nextBtn.Enabled = true;
         }
         private void WalkDirectoryTree(String path)
         {
@@ -122,5 +128,11 @@ namespace IFN647_SearchEngine
             }
         }
 
+        private void nextBtn_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm();
+            mainForm.Show();
+            this.Hide();
+        }
     }
 }
