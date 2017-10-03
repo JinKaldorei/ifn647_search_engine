@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace IFN647_SearchEngine
 {
-    public partial class IndexForm1 : Form
+    public partial class IndexForm : Form
     {
         private List<JournalArticle> articles;
         private LuceneSearch luceneSearch;
-        public IndexForm1()
+        public IndexForm()
         {
             InitializeComponent();
             //test
@@ -69,7 +69,7 @@ namespace IFN647_SearchEngine
         {
             textBox.AppendText("Start indexing ...\n");
             DateTime start = System.DateTime.Now;
-            LuceneSearch luceneSearch = new LuceneSearch();
+            luceneSearch = new LuceneSearch();
 
             string indexPath = indexPathLabel.Text;
 
@@ -130,9 +130,9 @@ namespace IFN647_SearchEngine
 
         private void nextBtn_Click(object sender, EventArgs e)
         {
-            MainForm mainForm = new MainForm();
+            MainForm mainForm = new MainForm(luceneSearch);
             mainForm.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }

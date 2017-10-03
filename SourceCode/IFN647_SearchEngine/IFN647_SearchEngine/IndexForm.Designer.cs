@@ -1,6 +1,6 @@
 ﻿namespace IFN647_SearchEngine
 {
-    partial class IndexForm1
+    partial class IndexForm
     {
         /// <summary>
         /// Required designer variable.

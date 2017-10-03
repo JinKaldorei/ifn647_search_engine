@@ -12,7 +12,7 @@ using Lucene.Net.QueryParsers;  // for QueryParser
 
 namespace IFN647_SearchEngine
 {
-    class LuceneSearch
+    public class LuceneSearch
     {
         Lucene.Net.Store.Directory luceneIndexDirectory;
         Lucene.Net.Analysis.Analyzer analyzer;

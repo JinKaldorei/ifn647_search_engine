@@ -12,9 +12,16 @@ namespace IFN647_SearchEngine
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        public LuceneSearch LuceneSearch { get; private set; } 
+        public MainForm(LuceneSearch luceneSearch)
         {
             InitializeComponent();
+            LuceneSearch = luceneSearch;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

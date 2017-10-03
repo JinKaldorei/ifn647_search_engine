@@ -16,7 +16,9 @@ namespace IFN647_SearchEngine
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new IndexForm1());
+            IndexForm indexForm = new IndexForm();
+            indexForm.Show();
+            Application.Run();
         }
     }
 }
